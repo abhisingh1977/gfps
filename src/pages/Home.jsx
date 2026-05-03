@@ -5,10 +5,8 @@ import SectionHeading from '../components/SectionHeading';
 import ScrollReveal from '../components/ScrollReveal';
 import Card from '../components/Card';
 import PageTransition from '../components/PageTransition';
-import { schoolImages, peopleImages, galleryImages, eventImages } from '../data/images';
+import { schoolImages, peopleImages, galleryImages } from '../data/images';
 import { programs, facilities } from '../data/academics';
-import { notices } from '../data/notices';
-import { events } from '../data/events';
 import { contactInfo } from '../data/navigation';
 
 const Home = () => {
@@ -113,52 +111,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Announcements */}
-      <section className="section-padding bg-light" id="announcements">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeading title="Notice Board" subtitle="Stay updated with the latest announcements" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {notices.slice(0, 4).map((notice, i) => (
-              <ScrollReveal key={notice.id} delay={i * 0.1}>
-                <motion.div className="bg-white p-5 rounded-xl shadow-md border-l-4 border-primary hover:shadow-lg transition-shadow" whileHover={{ x: 5 }}>
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h4 className="font-semibold text-dark text-sm md:text-base">{notice.title}</h4>
-                      <p className="text-gray-custom text-xs md:text-sm mt-1">{notice.description}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <span className="text-xs text-gray-custom">{new Date(notice.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
-                      {notice.isNew && <span className="block mt-1 text-[10px] bg-accent text-white px-2 py-0.5 rounded-full">NEW</span>}
-                    </div>
-                  </div>
-                </motion.div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Events */}
-      <section className="section-padding bg-white" id="events-preview">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeading title="Upcoming Events" subtitle="Join us for exciting events and activities" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.slice(0, 3).map((event, i) => (
-              <ScrollReveal key={event.id} delay={i * 0.1}>
-                <Card image={eventImages[event.id]} title={event.title} description={event.description} category={event.category} date={new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}>
-                  <div className="flex items-center gap-3 mt-3 text-xs text-gray-custom">
-                    <span>🕐 {event.time}</span>
-                    <span>📍 {event.location}</span>
-                  </div>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Link to="/events"><motion.button className="px-6 py-3 bg-secondary hover:bg-secondary-light text-white font-semibold rounded-full transition-colors cursor-pointer" whileHover={{ scale: 1.05 }}>View All Events →</motion.button></Link>
-          </div>
-        </div>
-      </section>
 
       {/* Gallery Preview */}
       <section className="section-padding bg-light" id="gallery-preview">
